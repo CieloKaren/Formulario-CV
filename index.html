@@ -3,101 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de CV</title>
+    <title>Formulario de CV</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #3498db;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], input[type="file"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group-inline {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .form-group-inline label {
+            flex: 1;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsividad */
+        @media (max-width: 600px) {
+            .form-group-inline {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Generador de Curriculum Vitae</h1>
-        <form action="cv.php" method="POST">
-            
-            <!-- Nombre y Apellidos -->
-            <label for="nombre">Nombre y Apellidos:</label>
-            <input type="text" id="nombre" name="nombre" required><br><br>
+        <form action="cv.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre">Nombre y Apellidos</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
 
-            <!-- Fecha de Nacimiento -->
-            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required><br><br>
+            <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            </div>
 
-            <!-- Ocupación -->
-            <label for="ocupacion">Ocupación:</label>
-            <input type="text" id="ocupacion" name="ocupacion" required><br><br>
+            <div class="form-group">
+                <label for="ocupacion">Ocupación</label>
+                <input type="text" id="ocupacion" name="ocupacion" required>
+            </div>
 
-            <!-- Contacto (Teléfono y Email) -->
-            <label for="telefono">Teléfono:</label>
-            <input type="number" id="telefono" name="telefono" required><br><br>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="number" id="telefono" name="telefono" required>
+            </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-            <!-- Nacionalidad -->
-            <label for="nacionalidad">Nacionalidad:</label>
-            <select id="nacionalidad" name="nacionalidad" required>
-                <option value="peruana">Peruana</option>
-                <option value="colombiana">Colombiana</option>
-                <option value="chilena">Chilena</option>
-                <option value="argentina">Argentina</option>
-            </select><br><br>
+            <div class="form-group">
+                <label for="nacionalidad">Nacionalidad</label>
+                <select id="nacionalidad" name="nacionalidad" required>
+                    <option value="peruana">Peruana</option>
+                    <option value="argentina">Argentina</option>
+                    <option value="mexicana">Mexicana</option>
+                    <!-- Añadir más opciones según necesidad -->
+                </select>
+            </div>
 
-            <!-- Nivel de inglés -->
-            <label>Nivel de inglés:</label><br>
-            <input type="radio" id="basico" name="nivel_ingles" value="basico" required>
-            <label for="basico">Básico</label><br>
+            <div class="form-group">
+                <label>Nivel de Inglés</label>
+                <label><input type="radio" name="nivel_ingles" value="básico" required> Básico</label>
+                <label><input type="radio" name="nivel_ingles" value="intermedio"> Intermedio</label>
+                <label><input type="radio" name="nivel_ingles" value="avanzado"> Avanzado</label>
+                <label><input type="radio" name="nivel_ingles" value="fluido"> Fluido</label>
+            </div>
 
-            <input type="radio" id="intermedio" name="nivel_ingles" value="intermedio">
-            <label for="intermedio">Intermedio</label><br>
+            <div class="form-group">
+                <label for="otros_idiomas">Otros Idiomas</label>
+                <select id="otros_idiomas" name="otros_idiomas[]" multiple>
+                    <option value="Francés">Francés</option>
+                    <option value="Italiano">Italiano</option>
+                    <option value="Portugués">Portugués</option>
+                    <!-- Más idiomas -->
+                </select>
+            </div>
 
-            <input type="radio" id="avanzado" name="nivel_ingles" value="avanzado">
-            <label for="avanzado">Avanzado</label><br>
+            <div class="form-group">
+                <label for="lenguajes_programacion">Lenguajes de Programación</label>
+                <select id="lenguajes_programacion" name="lenguajes_programacion[]" multiple required>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="C++">C++</option>
+                    <option value="Java">Java</option>
+                    <!-- Más lenguajes -->
+                </select>
+            </div>
 
-            <input type="radio" id="fluido" name="nivel_ingles" value="fluido">
-            <label for="fluido">Fluido</label><br><br>
+            <div class="form-group">
+                <label for="aptitud">Aptitud</label>
+                <input type="text" id="aptitud" name="aptitud" list="aptitudes">
+                <datalist id="aptitudes">
+                    <option value="Responsabilidad social">
+                    <option value="Innovación">
+                    <option value="Adaptabilidad">
+                </datalist>
+            </div>
 
-            <!-- Lenguajes de programación -->
-            <label for="lenguajes_programacion">Lenguajes de programación:</label>
-            <select id="lenguajes_programacion" name="lenguajes_programacion[]" multiple required>
-                <option value="python">Python</option>
-                <option value="java">Java</option>
-                <option value="javascript">JavaScript</option>
-                <option value="c++">C++</option>
-                <option value="php">PHP</option>
-            </select><br><br>
+            <div class="form-group">
+                <label>Habilidades</label>
+                <label><input type="checkbox" name="habilidades[]" value="Programación"> Programación</label>
+                <label><input type="checkbox" name="habilidades[]" value="Trabajo en equipo"> Trabajo en equipo</label>
+                <label><input type="checkbox" name="habilidades[]" value="Resolución de problemas"> Resolución de problemas</label>
+                <!-- Añadir más habilidades -->
+            </div>
 
-            <!-- Aptitudes -->
-            <label for="aptitudes">Aptitudes:</label>
-            <input list="aptitudes-list" id="aptitudes" name="aptitudes" required>
-            <datalist id="aptitudes-list">
-                <option value="Adaptabilidad">
-                <option value="Curiosidad por la tecnología">
-                <option value="Innovación">
-                <option value="Responsabilidad social">
-            </datalist><br><br>
+            <div class="form-group">
+                <label for="perfil">Perfil</label>
+                <textarea id="perfil" name="perfil" placeholder="Escribe una descripción corta sobre ti..."></textarea>
+            </div>
 
-            <!-- Habilidades -->
-            <label for="habilidades">Habilidades:</label><br>
-            <input type="checkbox" id="programacion" name="habilidades[]" value="Programación">
-            <label for="programacion">Programación</label><br>
+            <div class="form-group">
+                <label for="imagen">Foto de Perfil</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
+            </div>
 
-            <input type="checkbox" id="redes" name="habilidades[]" value="Redes y Ciberseguridad">
-            <label for="redes">Redes y Ciberseguridad</label><br>
-            
-            <input type="checkbox" id="analisis" name="habilidades[]" value="Análisis y resolución de problemas">
-            <label for="analisis">Análisis y resolución de problemas</label><br>
-
-            <input type="checkbox" id="equipo" name="habilidades[]" value="Trabajo en equipo">
-            <label for="equipo">Trabajo en equipo</label><br>
-
-            <input type="checkbox" id="pensamiento" name="habilidades[]" value="Pensamiento crítico y lógico">
-            <label for="pensamiento">Pensamiento crítico y lógico</label><br><br>
-
-            <!-- Perfil -->
-            <label for="perfil">Perfil:</label><br>
-            <textarea id="perfil" name="perfil"></textarea><br><br>
-
-            <!-- Botón de Enviar -->
-            <input type="submit" value="Generar CV">
+            <button type="submit">Generar CV</button>
         </form>
     </div>
 </body>
