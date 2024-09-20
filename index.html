@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generador de Curriculum Vitae</h1>
+        <form action="cv.php" method="POST">
+            
+            <!-- Nombre y Apellidos -->
+            <label for="nombre">Nombre y Apellidos:</label>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+
+            <!-- Fecha de Nacimiento -->
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required><br><br>
+
+            <!-- Ocupación -->
+            <label for="ocupacion">Ocupación:</label>
+            <input type="text" id="ocupacion" name="ocupacion" required><br><br>
+
+            <!-- Contacto (Teléfono y Email) -->
+            <label for="telefono">Teléfono:</label>
+            <input type="number" id="telefono" name="telefono" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <!-- Nacionalidad -->
+            <label for="nacionalidad">Nacionalidad:</label>
+            <select id="nacionalidad" name="nacionalidad" required>
+                <option value="peruana">Peruana</option>
+                <option value="colombiana">Colombiana</option>
+                <option value="chilena">Chilena</option>
+                <option value="argentina">Argentina</option>
+            </select><br><br>
+
+            <!-- Nivel de inglés -->
+            <label>Nivel de inglés:</label><br>
+            <input type="radio" id="basico" name="nivel_ingles" value="basico" required>
+            <label for="basico">Básico</label><br>
+
+            <input type="radio" id="intermedio" name="nivel_ingles" value="intermedio">
+            <label for="intermedio">Intermedio</label><br>
+
+            <input type="radio" id="avanzado" name="nivel_ingles" value="avanzado">
+            <label for="avanzado">Avanzado</label><br>
+
+            <input type="radio" id="fluido" name="nivel_ingles" value="fluido">
+            <label for="fluido">Fluido</label><br><br>
+
+            <!-- Lenguajes de programación -->
+            <label for="lenguajes_programacion">Lenguajes de programación:</label>
+            <select id="lenguajes_programacion" name="lenguajes_programacion[]" multiple required>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="javascript">JavaScript</option>
+                <option value="c++">C++</option>
+                <option value="php">PHP</option>
+            </select><br><br>
+
+            <!-- Aptitudes -->
+            <label for="aptitudes">Aptitudes:</label>
+            <input list="aptitudes-list" id="aptitudes" name="aptitudes" required>
+            <datalist id="aptitudes-list">
+                <option value="Adaptabilidad">
+                <option value="Curiosidad por la tecnología">
+                <option value="Innovación">
+                <option value="Responsabilidad social">
+            </datalist><br><br>
+
+            <!-- Habilidades -->
+            <label for="habilidades">Habilidades:</label><br>
+            <input type="checkbox" id="programacion" name="habilidades[]" value="Programación">
+            <label for="programacion">Programación</label><br>
+
+            <input type="checkbox" id="redes" name="habilidades[]" value="Redes y Ciberseguridad">
+            <label for="redes">Redes y Ciberseguridad</label><br>
+            
+            <input type="checkbox" id="analisis" name="habilidades[]" value="Análisis y resolución de problemas">
+            <label for="analisis">Análisis y resolución de problemas</label><br>
+
+            <input type="checkbox" id="equipo" name="habilidades[]" value="Trabajo en equipo">
+            <label for="equipo">Trabajo en equipo</label><br>
+
+            <input type="checkbox" id="pensamiento" name="habilidades[]" value="Pensamiento crítico y lógico">
+            <label for="pensamiento">Pensamiento crítico y lógico</label><br><br>
+
+            <!-- Perfil -->
+            <label for="perfil">Perfil:</label><br>
+            <textarea id="perfil" name="perfil"></textarea><br><br>
+
+            <!-- Botón de Enviar -->
+            <input type="submit" value="Generar CV">
+        </form>
+    </div>
+</body>
+</html>
